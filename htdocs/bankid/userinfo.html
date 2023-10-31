@@ -1,0 +1,120 @@
+<!DOCTYPTE html>
+<html>
+<head>
+<title>Knihovna - online registrace</title>
+ <link rel="stylesheet" href="userinfo.css">
+<style>
+body{text-align: center;
+     background-color: white;
+     font-size: 100%;
+     font-family: Arial, 'Arial Unicode MS', Helvetica, serif;
+     color: #212063;
+     text-decoration: none; }
+</style>
+
+</head>
+<body>
+<!--here you can insert your library logo-->
+<img src="https://opac.library.any/some_path/logo.png" width="100" height="100" border="0" alt="libary logo"><br><br>
+<h1>Online registrace do knihovny pomocí <a href="https://www.bankid.cz/" target="_blank">Bankovní identit\y</a></h1>
+<div id="process">
+
+   <div id="error" style="display:none;">Při zpracování online registrace došlo k chybě - <div style="font-size: 100%; display: inline;" id="error_text"></div><br>
+
+   <div id="error_error" style="display:none;">O problému jsme byli informováni a co nejdříve jej napravíme. Zkuste, prosím, opakovat registraci později.<br>Děkujeme za pochopení!</div>
+
+   <div id="error_warning" style="display: none;">Nelze bohužel provést online registraci. Prosíme, navštivte naši <a href="https://www.library.any" target="_blank">knihovnu</a> osobně nebo nás kontaktuje e-mailem registrace@library<span></span>.any nebo telefonicky na čísle 123 456 789.</div>
+
+   <div id="error_unverified" style="display: none;">Nebyla ověřena Vaše identita. Pokuste se <a href="https://opac.library.any/F?func=bor-new-0&CON_LNG=CZE">registrovat</a> znovu. 
+   <h3><div style="display: block; text-align: center; margin-top: 1em;"><a href="https://opac.library.any">Katalog knihovny</a> &nbsp;&nbsp;&nbsp; <a href="https://www.library.any">Web knihovny</a></div></h3>
+   </div>
+
+   <div id="valid_registration" style="display:none;">Vaše registrace v knihovně je platná a skončí <div id="expiry_date" style="display:inline;"></div>. Prodloužit registraci lze <div id="expiry_days_before" style="display:inline;"></div> dní před jejím skončením.
+   <h3><div style="display: block; text-align: center; margin-top: 1em;"><a href="https://opac.library.any">Katalog knihovny</a> &nbsp;&nbsp;&nbsp; <a href="https://www.library.any">Web knihovny</a></div></h3>
+   </div>
+   
+   <div id="too_young" style="display:none;">Registrace v knihovně bohužel není možná. Minimální věk pro online registraci je <div id="minimal_age" style="display:inline;"></div> let.
+   <h3><div style="display: block; text-align: center; margin-top: 1em;"><a href="https://opac.library">Katalog knihovny</a> &nbsp;&nbsp;&nbsp; <a href="https://www.library.any">Web knihovny</a></div></h3>
+   </div>
+ 
+   <div id="patron_found" style="display:none;">Vaše osobní a kontaktní údaje byly ověřeny pomocí Bankovní identity.<br><br>
+      Nyní se můžete zaregistrovat jako čtenář do knihovny.<br><br>
+      Vaše registrace bude platná XXX měsíců a zaplatíte za ni <div id="registration_fee" style="display:inline;"></div> Kč. <div id="registration_fee_note" style="display:inline;">Poplatek lze uhradit online kartou ihned po registraci.</div><br>
+      <!--Váš status čtenáře bude:  <div id="patron_status" style="display:inline; font-weight: bold;"></div> <br>-->
+	  <br>
+      <input type="checkbox" name="souhlas_kr" id="souhlas_kr"><label for="souhlas_kr">Souhlasím</label> s <a href="https://www.library.any/path_to_library_rules/" target="_blank">knihovním řádem a ceníkem služeb</a> Moravskoslezské vědecké knihovny v Ostravě.<br>
+      <input type="checkbox" name="souhlas_ou" id="souhlas_ou"><label for="souhlas_ou">Souhlasím</label> s poskytnutím svých <a href="https://www.library.any/path_to_info_about_protection_of_personal_data_gdpr" target="_blank">osobních údajů</a> za účelem evidence čtenáře.<br><br>
+      Vaše přihlašovací jméno (login) do <a href="https://opac.library.any" target="_blank">katalogu</a> je: <div id="login" style="font-family: 'Arial', monospace; font-weight: bold; display: inline;"></div>
+      <div id="password_change_button" style="display:none;" class="button1" onclick="document.querySelector(\'#change_password\;).style.display=\'\';" >Změnit heslo</div>
+      <div id="ztp" style="margin-top: 0.5em;">V případě, že máte nárok na registraci zdarma (zdravotně znevýhodnění, osoby evidované<br> na Úřadě práce ČR a osoby v hmotné nouzi), zaškrtněte: <input type="checkbox" name="ztp_check" id="ztp_check" onclick="let ztpel=document.querySelector('#ztp_send'); if (this.checked) { ztpel.style.display=''; } else { ztpel.style.display='none'; }">
+             <div id="ztp_send" style="display: none;">
+                Prosíme, nahrajte fotografii (sken) průkazu opravňujícího k bezplatné registraci. <br>
+                <input type="file" id="ztp_file" name="ztp_file">
+                <button type="button" id="ztp_file_upload" name="ztp_file_upload" style="display:none;" onclick="ZtpFileUpload();">Nahrát</button>
+                <div id="ztp_send_error_nofile" style="display: none;">Nenahráli jste žádný soubor!</div>
+                <div id="ztp_send_error_size" style="display: none;">Soubor je příliš veliký, maximální velikost je 2 MB.</div>
+                <div id="ztp_send_error_type" style="display: none;">Soubor není obrázek nebo PDF!</div>
+                <div id="ztp_send_error_upload" style="display: none;">Chyba, soubor se nepodařilo nahrát.</div>
+                <div id="ztp_send_success" style="display: none;">Soubor nahrán.</div>
+            </div>
+      </div>
+      <table border="0" id="change_password" style="display:none;  margin-left: auto; margin-right: auto; margin-top: 0.5em;">
+         <tr id="password_line1"><td><label for="password1">Zadejte heslo :</label></td>
+             <td style="width: fit-content;">
+			 <input name="password1" id="password1" type="password" length="20" autocomplete="new-password">
+                 <div id="togglePassword" style="display: inline; font-size: 125%; margin-left: -30px; cursor: pointer;" onclick="PasswordShow();">&#128065;</div>
+                 <!--input type="checkbox" id="password_show" name="password_show" onclick="PasswordShow();"><font style="font-size: 75%;"><label for="password_show">Zobrazit heslo</font><label></td></tr-->
+         <tr  id="password_line2"><td style="width: fit-content;"><label for="password2">Zopakujte heslo :</label></td>
+             <td>
+			 <input name="password2" id="password2" type="password" length="20" autocomplete="new-password">
+			 </td></tr>
+         <tr id="setMail" style="display:none;"><td><label for="email">Váš e-mail :</label></td>
+             <td>
+			 <input name="email" id="email" type="email" length="40" autocomplete="off">
+			 </td></tr>
+         <tr><td style="padding-left: 10em;">
+            <div class="button1" id="registrate_button" style="width:10em;" onclick="MsvkCallRegistrate();">Registrovat</div>
+         </td></tr>
+      </table>
+      <div id="registration_alert_kr" style="font-weight: bold; display: none;">Musíte souhlasit s knihovním řádem a ceníkem!</div>
+      <div id="registration_alert_ou" style="font-weight: bold;display: none;">Musíte souhlasit s poskytnutím svých osobních údajů knihovně!</div>
+      <div id="registration_alert_no_pass" style="font-weight: bold; display: none;">Nezadali jste heslo!</div>
+      <div id="registration_alert_pass_diff" style="font-weight: bold; display: none;">Zadaná hesla nesouhasí!</div>
+      <div id="registration_alert_pass_short" style="font-weight: bold; display: none;">Zadané heslo je příliš krátké!</div>
+      <div id="registration_alert_email_syntax" style="font-weight: bold; display: none;">Zadajte platnou e-mailovou adresu!</div>
+</div>
+
+
+   <div id="patron_new" style="display:none;"><!--obsah stejny jako u #patron_found, momentalne proto neni JS element pouzivan, ale pouzije se patron_found, i kdyz je novy ctenar.-->
+   </div>
+
+   <div id="registration_error"  style="display:none;">Při zpracování online registrace došlo k chybě <div style="font-size: 70%; display: inline;" id="registration_error_text"></div><br>
+   O problému jsme byli informováni a co nejdříve jej napravíme. Zkuste, prosím, opakovat registraci později.<br>Děkujeme za pochopení!
+   <h3><div style="display: block; text-align: center; margin-top: 1em;"><a href="https://opac.library.any">Katalog knihovny</a> &nbsp;&nbsp;&nbsp; <a href="https://www.library.any">Web knihovny</a></div></h3></div>
+   <div id="registration_success"  style="display:none;">
+      <br>
+      Děkujeme za registraci v <a href="https://www.library.any">knihovně</a>!<br>
+      Nyní se můžete <a href="//katalog.svkos.cz/F/?func=BOR-INFO">přihlásit do katalogu</a> a ve svém čtenářském kontě <a href="https://opac.library.any/F/?func=bor-cash&adm_library=MVK50">uhradit registrační poplatek online</a> platební kartou.<br>
+      Po uhrazení poplatku můžete využívat <!--naše předplacené <a href="https://www.library.any/katalog-a-databaze/databaze/" target="_blank">databáze</a>-->všech našich služeb.<br>
+          </div>
+   </div>
+   <div id="registration_success_ztp" style="display:none;">
+      Děkujeme za registraci v <a href="https://www.library.any">knihovně</a>!<br>
+      Prosíme, <strong>nehraďte poplatek</strong> vygenerovaný za registraci. Ověříme průkaz, který jste nám poslali a poplatek Vám zrušíme.<br>
+      Nyní se můžete <a href="https://opac.library.any/F/<func=BOR-INFO">přihlásit do katalogu</a> a využívat všech našich služeb.
+   </div>
+   <div id="registration_success_ztp_error_upload" style="display:none;">
+      Děkujeme za registraci v <a href="https://www.library.any">knihovně</a>!<br>
+      Prosíme, <strong>nehraďte poplatek</strong> vygenerovaný za registraci. Nepodařilo se zde nahrát Váš průkaz oplatňující k bezplatné registraci. Prosíme, pošlete nám jej e-mailem na registration@library.any<br>
+      Nyní se můžete <a href="https://opac.library.any/?func=BOR-INFO">přihlásit do katalogu</a> a využívat všech našich služeb.
+   </div>
+   <div id="registration_success_zdarma"  style="display:none;"><!--pokud ma nulovy poplatek-->
+      Děkujeme za registraci v <a href="https://www.library.any">knihovně</a>!<br>
+      Nyní se můžete <a href="https://opac.library.any/F/?func=BOR-INFO">přihlásit do katalogu</a> a využívat všech našich služeb.
+   </div>
+
+
+<script type="text/javascript" src="userinfo.js"></script>
+</div>
+</body>
+</html>

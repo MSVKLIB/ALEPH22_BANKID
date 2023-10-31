@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- filename: bor-new -->
+<html>
+<head>
+<include>meta-tags
+<!-- oko k zviditelnìní hesla Jelen 20231010-->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<title>&f-base - Formuláø registrace ètenáøe</title>
+
+       <script src="&server_httpd/bankid/main.js" defer></script> 
+
+</head>
+
+<body topmargin="0" onload="window.document.form1.reset(); window.document.form1.M_Z303_LAST_NAME.focus()">
+
+<include>head-replace
+<div style="text-align:center">
+<div class="title">Online registrace</div>
+<p> Využíváte-li banku zapojenou do <a href="https://www.bankid.cz/" target="_blank">Bankovní identity</a> a je vám více než 18 let, mùžete se online zaregistrovat do naší knihovny a po zaplacení registraèního poplatku ihned využívat všech našich služeb vèetnì pøístupu do online zdrojù.</p>
+    <a id="login" href="" class="btn btn-primary"> 
+    <!--lze použít stažený obrázek png-->
+    <!--img height="40px" src="&server_httpd/bankid/bankid_button.be6a4b7a.png" alt="Ovìøit se pomocí Bankovní identity"-->
+    <!-- nebo originální vektorové tlaèítko .svg  BEN 20231026 -->
+      <svg width="292" height="48" viewBox="0 0 292 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g id="Group 8">
+      <rect id="Rectangle 2" x="0.5" y="0.5" width="291" height="47" rx="7.5" fill="black" stroke="white"/>
+      <text id="Ovìøit se s Bank iD" fill="white" font-family="Poppins" font-size="16" font-weight="600" letter-spacing="0em"><tspan x="133" y="29.6">Ovìøit se s Bank iD</tspan></text>
+      <line id="Line 4" x1="119.5" y1="40" x2="119.5" y2="7.98438" stroke="white"/>
+      <g id="bankid_logo 1" clip-path="url(#clip0_2114_158)">
+      <path id="Vector" d="M91.815 18.558H95.8892C99.0993 18.558 100.704 21.2266 100.704 23.8706C100.704 26.5392 99.0993 29.1831 95.8892 29.1831H91.815V27.9476H93.5435V19.7935H91.815V18.558ZM89.4694 32.5189H96.0128C101.865 32.5189 104.779 28.1948 104.779 23.8706C104.779 19.5464 101.865 15.2222 96.0128 15.2222H89.4694V32.5189ZM82.8027 18.558H86.5065V15.2222H82.8027V18.558ZM82.8027 19.7935H86.5065V32.5189H82.8027V19.7935ZM67.3947 32.5189V28.2689H68.6292L72.3334 32.5189H76.0125V31.2835L71.3457 26.045L75.8888 21.0289V19.7935H72.358L68.6292 24.0435V25.7485H67.3947V15.2222H63.691V32.5189H67.3947ZM57.1473 32.5189H60.8512V24.8095C60.8512 21.622 58.5301 19.5464 55.9374 19.5464C54.8509 19.5464 53.715 19.917 52.7027 20.7077V22.1409H51.468V19.7935H48.258V32.5189H51.9619V25.4767C51.9619 23.6976 53.32 22.7586 54.6533 22.7586C55.9126 22.7586 57.1473 23.5988 57.1473 25.3531V32.5189ZM38.4306 22.7092C40.0851 22.7092 41.4678 24.0435 41.4678 26.1439C41.4678 28.2441 40.0851 29.5785 38.4306 29.5785C36.7762 29.5785 35.2947 28.2441 35.2947 26.1439C35.2947 24.0435 36.7762 22.7092 38.4306 22.7092ZM31.4674 26.1439C31.4674 30.2456 34.4058 32.7661 37.3195 32.7661C38.48 32.7661 39.6406 32.3707 40.6036 31.4811V30.1715H41.8382V32.5189H45.2952V19.7935H41.8382V22.1409H40.6036V20.8313C39.6406 19.9417 38.48 19.5464 37.3195 19.5464C34.4058 19.5464 31.4674 22.0668 31.4674 26.1439ZM18.8991 18.3109H23.3931C24.7759 18.3109 25.492 19.2993 25.492 20.2877C25.492 21.276 24.7759 22.2644 23.3931 22.2644H20.1338V25.4767H23.7141C25.0969 25.4767 25.813 26.4651 25.813 27.4535C25.813 28.4418 25.0969 29.4302 23.7141 29.4302H18.8991V18.3109ZM28.1835 24.3647H26.1587V23.1293H27.9366C28.9489 22.2892 29.4675 21.0784 29.4675 19.8429C29.4675 17.5449 27.665 15.2222 23.9117 15.2222H15.0718V32.5189H24.2574C28.0353 32.5189 29.8626 30.122 29.8626 27.7747C29.8626 26.4651 29.2947 25.2049 28.1835 24.3647Z" fill="white"/>
+      </g></g>
+      <defs><clipPath id="clip0_2114_158"><rect width="90" height="18" fill="white" transform="translate(15 15)"/></clipPath>
+      <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;display=swap');</style></defs>
+      </svg>
+    </a>
+</div>
+
+
+<include>copyrights
+</body>
+</html>
