@@ -29,12 +29,12 @@ const uriParams = new URLSearchParams(authUriParams);
 const authUri = `${authEndpoint}?${uriParams}`;
 
 // Get the login button
-const loginButton = document.querySelector('#login');
-const loginButton1 = document.querySelector('#login1');
+const loginButton = document.querySelector('#login') || document.createElement('span');
+//const loginButton1 = document.querySelector('#login1');
 
 // Change login button href to authUri
 loginButton.href = authUri;
-loginButton1.href = authUri;
+//loginButton1.href = authUri;
 
 /* CALLING USERINFO/PROFILE EXAMPLE */
 
